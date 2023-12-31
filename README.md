@@ -1,16 +1,18 @@
 # Sanber52-Cypress-Kelompok5
 
-kelompok 5 - Quiz 3 Cypress
+Kelompok 5 - Quiz 3 Cypress
 
 Pembagian Tugas
 
-A - Regist
+Vebyanti - login
 
-B - Login
+Purwanto - choose product dan create account
 
-C - Update Address
+Salsabila - edit account info
 
-D - Update Info
+Fatur Rahman- edit address dan proceed to checkout
+
+Rahma - view and update shopping cart
 
 
 
