@@ -10,7 +10,7 @@ Purwanto - choose product dan create account
 
 Salsabila - edit account info
 
-Fatur - edit address dan proceed to checkout
+Fatur Rahman- edit address dan proceed to checkout
 
 Rahma - view and update shopping cart
 
