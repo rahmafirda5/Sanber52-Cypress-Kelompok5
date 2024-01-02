@@ -1,71 +1,29 @@
 describe('Edit Account Information', () => {
-    beforeEach(() => {
+  it('should allow the user to edit account information', () => {
+    // Visit the Magento website
+    cy.visit('https://magento.softwaretestingboard.com/customer/account/index/');
 
-      cy.visit('https://magento.softwaretestingboard.com/')
+    // Assuming there's a link or button to navigate to the login page
+    cy.contains('Sign In').click();
 
-    })
-  
-    it('check displays empty cart', () => {
+    // Assuming there are login form fields
+    cy.get('#email').type('your@email.com');
+    cy.get('#pass').type('yourpassword');
 
-      cy.get('.minicart-wrapper > .action').click()
-      cy.get('.cart-empty').should('be.visible')
-  
-    })
+    // Assuming there's a login button
+    cy.get('button[title="Sign In"]').click();
 
-    it('user is not able to add product to cart without choose the size and colour option', () => {
+    // Now, navigate to the account information page
+    cy.contains('Account Information').click();
 
-        cy.get('.product-items > :nth-child(1)').click()
-        cy.get('#product-addtocart-button').click()
-        cy.get('.size').should('contain', 'This is a required field')
-        cy.get('.swatch-attribute.color').should('contain', 'This is a required field')
-        
-    })
+    // Assuming there are form fields for editing account information
+    cy.get('#firstname').clear().type('New First Name');
+    cy.get('#lastname').clear().type('New Last Name');
 
-      it('user is able to add product to shopping cart', () => {
+    // Assuming there's a save button
+    cy.contains('Save Account Information').click();
 
-        cy.get('.product-items > :nth-child(1)').click()
-        cy.get('#option-label-size-143-item-168').click()
-        cy.get('#option-label-color-93-item-50').click()
-        cy.get('#product-addtocart-button').click()
-        cy.get('.message-success > div').should('be.visible')
-        cy.get('.showcart > .counter').should('be.visible')
-        cy.get('.showcart').click()
-        cy.get('#minicart-content-wrapper > .block-content > :nth-child(3) > div.primary').should('be.visible')
-        
-    })
-
-      it('user is able to view shopping cart', () => {
-
-        cy.get('.product-items > :nth-child(1)').click()
-        cy.get('#option-label-size-143-item-168').click()
-        cy.get('#option-label-color-93-item-50').click()
-        cy.get('#product-addtocart-button').click()
-        cy.get('.message-success > div').should('be.visible')
-        cy.get('.showcart > .counter').should('be.visible')
-        cy.get('.showcart').click()
-        cy.get('#minicart-content-wrapper > .block-content > :nth-child(3) > div.primary').should('be.visible')
-        cy.get(':nth-child(7) > .secondary > .action > span').click()
-        
-    })
-
-      it('user is able to update size on shopping cart', () => {
-
-        cy.get('.product-items > :nth-child(1)').click()
-        cy.get('#option-label-size-143-item-168').click()
-        cy.get('#option-label-color-93-item-50').click()
-        cy.get('#product-addtocart-button').click()
-        cy.get('.message-success > div').should('be.visible')
-        cy.get('.showcart > .counter').should('be.visible')
-        cy.get('.showcart').click()
-        cy.get('#minicart-content-wrapper > .block-content > :nth-child(3) > div.primary').should('be.visible')
-        cy.get(':nth-child(7) > .secondary > .action > span').click()
-        cy.get('.action-edit').click()
-        cy.get('#option-label-size-143-item-170').click()
-        cy.get('#product-updatecart-button').click()
-        cy.get('.message-success > div').should('be.visible')
-
-    })
-
-})
-  
-    
+    // You might want to add assertions to ensure the changes were saved
+    cy.contains('The account information has been saved.').should('exist');
+  });
+});
